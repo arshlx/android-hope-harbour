@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HopeHarbour" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#D2A745</item>
+        <item name="colorPrimaryVariant">#93B78D</item>
+        <item name="colorOnPrimary">#455358</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#836341</item>
+        <item name="colorSecondaryVariant">#999998</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+</resources>
