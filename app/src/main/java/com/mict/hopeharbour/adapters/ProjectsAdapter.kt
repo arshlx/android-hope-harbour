@@ -1,6 +1,5 @@
 package com.mict.hopeharbour.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,23 +9,23 @@ import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.mict.hopeharbour.R
 import com.mict.hopeharbour.databinding.ItemProjectBinding
-import com.mict.hopeharbour.main.MainActivity
+import com.mict.hopeharbour.interfaces.CountryNameInterface
 import com.mict.hopeharbour.model.Project
-import global_objects.Constants
 
-class ProjectsAdapter(private val fragment: Fragment, private val projects: List<Project>) :
+class ProjectsAdapter(
+    private val fragment: Fragment,
+    private val projects: List<Project>,
+    private val projectInterface: CountryNameInterface
+) :
     RecyclerView.Adapter<ProjectsAdapter.ProjectViewHolder>() {
     inner class ProjectViewHolder(private val binding: ItemProjectBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(project: Project) {
             binding.apply {
                 projectNameTxt.text = project.title
                 projectSummaryTxt.text = project.summary
                 container.setOnClickListener {
-                    fragment.apply {
-
-                    }
+                    projectInterface.onClick(Gson().toJson(project))
                 }
                 if (!project.imageLink.isNullOrEmpty())
                     Glide.with(fragment.requireContext()).load(project.imageLink)

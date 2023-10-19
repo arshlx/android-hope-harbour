@@ -52,4 +52,8 @@
     <string name="no_countries">No countries returned</string>
     <string name="no_projects">No active projects returned</string>
     <string name="app_name">Hope Harbour</string>
+    <string name="about">About</string>
+    <string name="donation_options">Donation Options</string>
+    <string name="organization_info">Organization Info</string>
+    <string name="address_str">%s, %s, %s, %s, %s. %s</string>
 </resources>

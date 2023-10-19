@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mict.hopeharbour.R
-import com.mict.hopeharbour.adapters.CountriesAdapter
 import com.mict.hopeharbour.adapters.ProjectsAdapter
 import com.mict.hopeharbour.databinding.FragmentProjectsBinding
+import com.mict.hopeharbour.interfaces.CountryNameInterface
 import com.mict.hopeharbour.main.vm.MainViewModel
 import global_objects.TaskStatus
 
-class ProjectsFragment : Fragment() {
+class ProjectsFragment : Fragment(), CountryNameInterface {
     private var _binding: FragmentProjectsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
@@ -51,6 +51,7 @@ class ProjectsFragment : Fragment() {
                     }
                 }
             }
+
             TaskStatus.SUCCESS -> {
                 binding.apply {
                     progressBar.visibility = View.GONE
@@ -59,7 +60,7 @@ class ProjectsFragment : Fragment() {
                         adapter =
                             ProjectsAdapter(
                                 this@ProjectsFragment,
-                                viewModel.projectList
+                                viewModel.projectList, this@ProjectsFragment
                             )
                         visibility = View.VISIBLE
                     }
@@ -70,6 +71,18 @@ class ProjectsFragment : Fragment() {
                 binding.progressBar.visibility = View.GONE
                 Toast.makeText(requireContext(), R.string.no_projects, Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    override fun onClick(country: String) {
+        viewModel.selProject = country
+        parentFragmentManager.beginTransaction().apply {
+            replace(
+                R.id.container,
+                ProjectDetailFragment.newInstance()
+            )
+            addToBackStack(null)
+            commit()
         }
     }
 }

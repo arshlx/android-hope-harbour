@@ -39,7 +39,7 @@ class CountriesFragment : Fragment(), CountryNameInterface {
         binding.btnFindCountry.setOnClickListener {
             if (!binding.countryEdt.text.isNullOrEmpty()) {
                 binding.countryEdtLayout.error = null
-                viewModel.getCountries(binding.countryEdt.text.toString())
+                viewModel.getCountries(binding.countryEdt.text.toString().trim())
             } else binding.countryEdtLayout.error = getString(R.string.empty_field)
         }
     }

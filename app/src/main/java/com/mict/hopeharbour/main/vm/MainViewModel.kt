@@ -15,7 +15,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var countriesList = listOf<CountriesResponse>()
     val projectStatus = MutableLiveData(TaskStatus.NONE)
     var projectList = listOf<Project>()
+    var selProject = ""
     var countryName = ""
+    var project:Project? = null
 
     fun getCountries(countryName: String) {
         countriesStatus.value = TaskStatus.LOADING
