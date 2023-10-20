@@ -34,7 +34,6 @@ class MainRepository {
 
     suspend fun getProjects(countryName: String): Pair<Int, List<Project>?> {
         return try {
-
             val response = remote?.getProjects(countryName)
             val projectList = response?.body()?.project
 

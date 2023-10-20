@@ -44,9 +44,23 @@ class ProjectDetailFragment : Fragment() {
             countryNameTxt.text = project.country
             projectSummaryTxt.text = project.summary
             val list = project.themes.theme
-            if (!list.isNullOrEmpty())
-            themesRecycler.adapter = ThemesAdapter(this@ProjectDetailFragment , list)
-            donationsContainer.setOnClickListener { }
+            if (!list.isNullOrEmpty()) {
+                themesRecycler.adapter = ThemesAdapter(this@ProjectDetailFragment, list)
+            }
+            if (project.donationOptions.donationOption.isNullOrEmpty()) {
+                donationsContainer.visibility = View.GONE
+            } else {
+                donationsContainer.setOnClickListener {
+                    parentFragmentManager.beginTransaction().apply {
+                        replace(
+                            R.id.container,
+                            DonationsFragment.newInstance()
+                        )
+                        addToBackStack(null)
+                        commit()
+                    }
+                }
+            }
             organizationContainer.setOnClickListener {
                 parentFragmentManager.beginTransaction().apply {
                     replace(
