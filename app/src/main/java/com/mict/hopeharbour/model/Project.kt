@@ -1,7 +1,6 @@
 package com.mict.hopeharbour.model
 
 import com.google.gson.annotations.SerializedName
-import model.DonationOptions
 
 data class Project(
     @SerializedName("id")
@@ -29,5 +28,5 @@ data class Project(
     @SerializedName("type")
     val type: String,
     @SerializedName("themes")
-    val themes: Theme,
+    val themes: Themes
 )

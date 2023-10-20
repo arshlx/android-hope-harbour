@@ -1,6 +1,5 @@
 package com.mict.hopeharbour.model
 
-import com.example.example.NativeName
 import com.google.gson.annotations.SerializedName
 
 data class Name(

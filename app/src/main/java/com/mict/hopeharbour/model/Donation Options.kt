@@ -1,7 +1,6 @@
-package model
+package com.mict.hopeharbour.model
 
 import com.google.gson.annotations.SerializedName
-import com.mict.hopeharbour.model.DonationOption
 
 data class DonationOptions(
     @SerializedName("donationOption")

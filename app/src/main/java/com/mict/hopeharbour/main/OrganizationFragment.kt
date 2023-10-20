@@ -51,11 +51,15 @@ class OrganizationFragment : Fragment() {
                     postal
                 )
                 organizationLinkTxt.apply {
-                    text = url
-                    val organizationUri = Intent(Intent.ACTION_VIEW)
-                    organizationUri.data = Uri.parse(url)
-                    setOnClickListener {
-                        startActivity(organizationUri)
+                    if (url.isNullOrEmpty())
+                        visibility = View.GONE
+                    else {
+                        text = url
+                        val organizationUri = Intent(Intent.ACTION_VIEW)
+                        organizationUri.data = Uri.parse(url)
+                        setOnClickListener {
+                            startActivity(organizationUri)
+                        }
                     }
                 }
                 organizationMissionTxt.text = mission

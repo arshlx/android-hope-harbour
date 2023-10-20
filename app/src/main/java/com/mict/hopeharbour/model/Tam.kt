@@ -1,4 +1,4 @@
-package com.example.example
+package com.mict.hopeharbour.model
 
 import com.google.gson.annotations.SerializedName
 

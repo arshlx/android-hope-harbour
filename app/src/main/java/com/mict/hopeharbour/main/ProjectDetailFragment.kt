@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.mict.hopeharbour.R
+import com.mict.hopeharbour.adapters.ThemesAdapter
 import com.mict.hopeharbour.databinding.FragmentProjectDetailBinding
 import com.mict.hopeharbour.main.vm.MainViewModel
 import com.mict.hopeharbour.model.Project
@@ -42,6 +43,9 @@ class ProjectDetailFragment : Fragment() {
                 .placeholder(R.drawable.vec_img_loading).into(projectImg)
             countryNameTxt.text = project.country
             projectSummaryTxt.text = project.summary
+            val list = project.themes.theme
+            if (!list.isNullOrEmpty())
+            themesRecycler.adapter = ThemesAdapter(this@ProjectDetailFragment , list)
             donationsContainer.setOnClickListener { }
             organizationContainer.setOnClickListener {
                 parentFragmentManager.beginTransaction().apply {
