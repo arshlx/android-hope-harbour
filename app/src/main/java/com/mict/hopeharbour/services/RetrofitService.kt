@@ -23,4 +23,13 @@ object RetrofitService {
             .baseUrl(Constants.COUNTRIES_URL)
             .addConverterFactory(GsonConverterFactory.create()).client(client).build()
     }
+
+    fun getAllCountriesClient(): Retrofit? {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        return Retrofit.Builder()
+            .baseUrl(Constants.ALL_COUNTRIES)
+            .addConverterFactory(GsonConverterFactory.create()).client(client).build()
+    }
 }

@@ -35,6 +35,8 @@ class CountriesFragment : Fragment(), CountryNameInterface {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         viewModel.countriesStatus.observe(viewLifecycleOwner, countriesObserver)
+        viewModel.allCountriesStatus.observe(viewLifecycleOwner, allCountriesObserver)
+        viewModel.getAllCountries()
 
         binding.btnFindCountry.setOnClickListener {
             if (!binding.countryEdt.text.isNullOrEmpty()) {
@@ -50,6 +52,41 @@ class CountriesFragment : Fragment(), CountryNameInterface {
     }
 
     private val countriesObserver = Observer<Int> {
+        when (it) {
+            TaskStatus.LOADING -> {
+                binding.apply {
+                    progressBar.visibility = View.VISIBLE
+                    countriesRecycler.apply {
+                        adapter = null
+                        visibility = View.GONE
+                    }
+                }
+            }
+
+            TaskStatus.SUCCESS -> {
+                binding.apply {
+                    progressBar.visibility = View.GONE
+                    countriesRecycler.apply {
+                        scheduleLayoutAnimation()
+
+                        adapter =
+                            CountriesAdapter(
+                                this@CountriesFragment, this@CountriesFragment,
+                                viewModel.countriesList
+                            )
+                        visibility = View.VISIBLE
+                    }
+                }
+            }
+
+            TaskStatus.EMPTY -> {
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), R.string.no_countries, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private val allCountriesObserver = Observer<Int> {
         when (it) {
             TaskStatus.LOADING -> {
                 binding.apply {

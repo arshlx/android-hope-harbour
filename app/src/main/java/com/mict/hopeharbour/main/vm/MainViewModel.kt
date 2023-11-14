@@ -14,6 +14,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val countriesStatus = MutableLiveData(TaskStatus.NONE)
     var countriesList = listOf<CountriesResponse>()
     val projectStatus = MutableLiveData(TaskStatus.NONE)
+    val allCountriesStatus = MutableLiveData(TaskStatus.NONE)
     var projectList = listOf<Project>()
     var selProject = ""
     var countryName = ""
@@ -23,6 +24,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         countriesStatus.value = TaskStatus.LOADING
         viewModelScope.launch {
             val result = repository.getCountries(countryName)
+            countriesList = result.second!!
+            countriesStatus.value = result.first
+        }
+    }
+
+    fun getAllCountries() {
+        countriesStatus.value = TaskStatus.LOADING
+        viewModelScope.launch {
+            val result = repository.getAllCountries()
             countriesList = result.second!!
             countriesStatus.value = result.first
         }
