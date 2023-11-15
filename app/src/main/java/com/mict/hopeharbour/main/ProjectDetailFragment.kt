@@ -14,7 +14,7 @@ import com.mict.hopeharbour.databinding.FragmentProjectDetailBinding
 import com.mict.hopeharbour.main.vm.MainViewModel
 import com.mict.hopeharbour.model.Project
 
-class ProjectDetailFragment : Fragment() {
+class ProjectDetailFragment : BaseFragment() {
 
     private var _binding: FragmentProjectDetailBinding? = null
     private val binding get() = _binding!!
@@ -71,6 +71,14 @@ class ProjectDetailFragment : Fragment() {
                     commit()
                 }
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        parentActivity.binding.appBarLayout.appBar.apply {
+            visibility = View.VISIBLE
+            title = viewModel.project!!.title
         }
     }
 

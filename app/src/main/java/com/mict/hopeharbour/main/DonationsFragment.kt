@@ -12,7 +12,7 @@ import com.mict.hopeharbour.databinding.FragmentDonationsBinding
 import com.mict.hopeharbour.databinding.FragmentOrganizationBinding
 import com.mict.hopeharbour.main.vm.MainViewModel
 
-class DonationsFragment : Fragment() {
+class DonationsFragment : BaseFragment() {
 
     private var _binding: FragmentDonationsBinding? = null
     private val binding get() = _binding!!
@@ -28,6 +28,10 @@ class DonationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        parentActivity.binding.appBarLayout.appBar.apply {
+            visibility = View.VISIBLE
+            title = getString(R.string.donation_options)
+        }
         binding.donationsRecycler.adapter = DonationOptionsAdapter(this, viewModel.project!!.donationOptions.donationOption)
     }
     companion object {

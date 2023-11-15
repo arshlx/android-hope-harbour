@@ -14,7 +14,7 @@ import com.mict.hopeharbour.databinding.FragmentOrganizationBinding
 import com.mict.hopeharbour.main.vm.MainViewModel
 import com.mict.hopeharbour.model.Organization
 
-class OrganizationFragment : Fragment() {
+class OrganizationFragment : BaseFragment() {
 
     private var _binding: FragmentOrganizationBinding? = null
     private val binding get() = _binding!!
@@ -33,6 +33,14 @@ class OrganizationFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         organization = viewModel.project!!.organization
         setUpViews()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        parentActivity.binding.appBarLayout.appBar.apply {
+            visibility = View.VISIBLE
+            title = viewModel.project!!.organization.name
+        }
     }
 
     private fun setUpViews() {

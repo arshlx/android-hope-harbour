@@ -20,26 +20,26 @@
 
         <TextView
             android:id="@+id/country_name_txt"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_medium"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAppearance="@style/text_style_title"
             android:textSize="@dimen/title_txt_size"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="India" />
 
         <TextView
             android:id="@+id/country_official_name_txt"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_medium"
             android:layout_marginTop="@dimen/space_xsmall"
             android:ellipsize="end"
             android:maxLines="2"
             android:textAppearance="@style/text_style_desc01"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/country_name_txt"
             tools:text="Republic of India" />

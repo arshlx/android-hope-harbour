@@ -15,7 +15,7 @@ import com.mict.hopeharbour.interfaces.CountryNameInterface
 import com.mict.hopeharbour.main.vm.MainViewModel
 import global_objects.TaskStatus
 
-class ProjectsFragment : Fragment(), CountryNameInterface {
+class ProjectsFragment : BaseFragment(), CountryNameInterface {
     private var _binding: FragmentProjectsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
@@ -33,6 +33,14 @@ class ProjectsFragment : Fragment(), CountryNameInterface {
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         viewModel.projectStatus.observe(viewLifecycleOwner, projectsObserver)
         viewModel.getProjects()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        parentActivity.binding.appBarLayout.appBar.apply {
+            visibility = View.VISIBLE
+            title = viewModel.countryName
+        }
     }
 
     companion object {

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.mict.hopeharbour.R
@@ -15,7 +14,7 @@ import com.mict.hopeharbour.interfaces.CountryNameInterface
 import com.mict.hopeharbour.main.vm.MainViewModel
 import global_objects.TaskStatus
 
-class CountriesFragment : Fragment(), CountryNameInterface {
+class CountriesFragment : BaseFragment(), CountryNameInterface {
 
 
     private var _binding: FragmentCountriesBinding? = null
@@ -37,12 +36,19 @@ class CountriesFragment : Fragment(), CountryNameInterface {
         viewModel.countriesStatus.observe(viewLifecycleOwner, countriesObserver)
         viewModel.allCountriesStatus.observe(viewLifecycleOwner, allCountriesObserver)
         viewModel.getAllCountries()
-
         binding.btnFindCountry.setOnClickListener {
             if (!binding.countryEdt.text.isNullOrEmpty()) {
                 binding.countryEdtLayout.error = null
                 viewModel.getCountries(binding.countryEdt.text.toString().trim())
             } else binding.countryEdtLayout.error = getString(R.string.empty_field)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        parentActivity.binding.appBarLayout.appBar.apply {
+            visibility = View.VISIBLE
+            title = getString(R.string.countries)
         }
     }
 
