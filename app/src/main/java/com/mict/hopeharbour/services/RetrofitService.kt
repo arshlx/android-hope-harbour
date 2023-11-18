@@ -15,6 +15,7 @@ object RetrofitService {
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).client(client).build()
     }
+
     fun getCountriesClient(): Retrofit? {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY

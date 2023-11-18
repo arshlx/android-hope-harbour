@@ -21,7 +21,7 @@ class SplashFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSplashBinding.inflate(inflater, container, false)
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +43,7 @@ class SplashFragment : BaseFragment() {
             }
         }
     }
+
     companion object {
         @JvmStatic
         fun newInstance() = SplashFragment()

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mict.hopeharbour.model.CountriesResponse
 import com.mict.hopeharbour.model.Project
+import com.mict.hopeharbour.model.updates.UpdateEntry
 import global_objects.TaskStatus
 import kotlinx.coroutines.launch
 
@@ -15,10 +16,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     var countriesList = listOf<CountriesResponse>()
     val projectStatus = MutableLiveData(TaskStatus.NONE)
     val allCountriesStatus = MutableLiveData(TaskStatus.NONE)
+    val projectUpdateStatus = MutableLiveData(TaskStatus.NONE)
     var projectList = listOf<Project>()
+    var updateList = listOf<UpdateEntry>()
     var selProject = ""
     var countryName = ""
-    var project:Project? = null
+    var project: Project? = null
 
     fun getCountries(countryName: String) {
         countriesStatus.value = TaskStatus.LOADING
@@ -45,6 +48,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             if (result.second != null)
                 projectList = result.second!!
             projectStatus.value = result.first
+        }
+    }
+
+    fun getProjectUpdates() {
+        projectUpdateStatus.value = TaskStatus.LOADING
+        viewModelScope.launch {
+            val result = repository.getProjectUpdates(project!!.id.toString())
+            if (result.second != null)
+                updateList = result.second!!
+            projectUpdateStatus.value = result.first
         }
     }
 }

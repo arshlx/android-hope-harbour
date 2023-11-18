@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.mict.hopeharbour.R
@@ -33,14 +32,6 @@ class OrganizationFragment : BaseFragment() {
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         organization = viewModel.project!!.organization
         setUpViews()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        parentActivity.binding.appBarLayout.appBar.apply {
-            visibility = View.VISIBLE
-            title = viewModel.project!!.organization.name
-        }
     }
 
     private fun setUpViews() {

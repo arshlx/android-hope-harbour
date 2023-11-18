@@ -47,9 +47,12 @@ class CountriesFragment : BaseFragment(), CountryNameInterface {
     override fun onResume() {
         super.onResume()
         parentActivity.binding.appBarLayout.appBar.apply {
+            setNavigationOnClickListener {
+                requireActivity().finish()
+            }
             visibility = View.VISIBLE
-            title = getString(R.string.countries)
         }
+        binding.countryEdt.setText("")
     }
 
     companion object {

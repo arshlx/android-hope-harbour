@@ -58,4 +58,6 @@
     <string name="address_str">%s, %s, %s, %s, %s. %s</string>
     <string name="projects">Projects</string>
     <string name="countries">Countries</string>
+    <string name="donation_option_str">$%s</string>
+    <string name="progress_report">Progress Report</string>
 </resources>

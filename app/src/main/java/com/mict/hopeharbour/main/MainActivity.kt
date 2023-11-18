@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         setContentView(binding.root)
-        binding.appBarLayout.appBar.navigationIcon  = getDrawable(R.drawable.vec_arrow_left)
-        binding.appBarLayout.appBar.title = getString(R.string.app_name)
         supportFragmentManager.beginTransaction().apply {
             replace(
                 R.id.container,

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -48,7 +47,7 @@ class ProjectDetailFragment : BaseFragment() {
                 themesRecycler.adapter = ThemesAdapter(this@ProjectDetailFragment, list)
             }
             if (project.donationOptions.donationOption.isNullOrEmpty()) {
-                donationsContainer.visibility = View.GONE
+                donationsCard.visibility = View.GONE
             } else {
                 donationsContainer.setOnClickListener {
                     parentFragmentManager.beginTransaction().apply {
@@ -71,14 +70,17 @@ class ProjectDetailFragment : BaseFragment() {
                     commit()
                 }
             }
-        }
-    }
 
-    override fun onResume() {
-        super.onResume()
-        parentActivity.binding.appBarLayout.appBar.apply {
-            visibility = View.VISIBLE
-            title = viewModel.project!!.title
+            reportContainer.setOnClickListener {
+                parentFragmentManager.beginTransaction().apply {
+                    replace(
+                        R.id.container,
+                        ProgressFragment.newInstance()
+                    )
+                    addToBackStack(null)
+                    commit()
+                }
+            }
         }
     }
 
