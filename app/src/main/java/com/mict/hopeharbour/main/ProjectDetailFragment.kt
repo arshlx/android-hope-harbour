@@ -12,6 +12,7 @@ import com.mict.hopeharbour.adapters.ThemesAdapter
 import com.mict.hopeharbour.databinding.FragmentProjectDetailBinding
 import com.mict.hopeharbour.main.vm.MainViewModel
 import com.mict.hopeharbour.model.Project
+import global_objects.BaseFragment
 
 class ProjectDetailFragment : BaseFragment() {
 

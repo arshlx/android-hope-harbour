@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mict.hopeharbour.adapters.DonationOptionsAdapter
 import com.mict.hopeharbour.databinding.FragmentDonationsBinding
 import com.mict.hopeharbour.main.vm.MainViewModel
+import global_objects.BaseFragment
 
 class DonationsFragment : BaseFragment() {
 

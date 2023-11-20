@@ -12,6 +12,7 @@ import com.mict.hopeharbour.adapters.CountriesAdapter
 import com.mict.hopeharbour.databinding.FragmentCountriesBinding
 import com.mict.hopeharbour.interfaces.CountryNameInterface
 import com.mict.hopeharbour.main.vm.MainViewModel
+import global_objects.BaseFragment
 import global_objects.TaskStatus
 
 class CountriesFragment : BaseFragment(), CountryNameInterface {

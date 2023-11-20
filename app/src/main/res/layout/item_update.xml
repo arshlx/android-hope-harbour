@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/space_normal"
+    app:strokeColor="@color/color_divider"
+    android:layout_marginTop="@dimen/space_normal"
+    app:strokeWidth="2dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/container_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_normal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/date_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/text_style_lar_header01"
+            tools:text="20/11/2023" />
+
+        <View
+            android:id="@+id/div"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/width_divider"
+            android:layout_marginTop="@dimen/space_normal"
+            android:background="@color/color_divider"
+            app:layout_constraintTop_toBottomOf="@id/date_txt" />
+
+        <TextView
+            android:id="@+id/title_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_normal"
+            android:textAppearance="@style/text_style_lar_header01"
+            tools:text="Made a donation" />
+
+        <TextView
+            android:id="@+id/authors_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_medium"
+            android:textAppearance="@style/text_style_desc02"
+            tools:text="Arshdeep Singh" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

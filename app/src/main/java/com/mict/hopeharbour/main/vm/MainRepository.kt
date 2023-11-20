@@ -3,7 +3,6 @@ package com.mict.hopeharbour.main.vm
 import com.mict.hopeharbour.model.CountriesResponse
 import com.mict.hopeharbour.model.Project
 import com.mict.hopeharbour.model.updates.UpdateEntry
-import com.mict.hopeharbour.model.updates.UpdatesResponse
 import com.mict.hopeharbour.services.APIRemote
 import com.mict.hopeharbour.services.AllCountriesRemote
 import com.mict.hopeharbour.services.CountriesAPIRemote

@@ -12,6 +12,7 @@ import com.mict.hopeharbour.adapters.ProjectsAdapter
 import com.mict.hopeharbour.databinding.FragmentProjectsBinding
 import com.mict.hopeharbour.interfaces.CountryNameInterface
 import com.mict.hopeharbour.main.vm.MainViewModel
+import global_objects.BaseFragment
 import global_objects.TaskStatus
 
 class ProjectsFragment : BaseFragment(), CountryNameInterface {

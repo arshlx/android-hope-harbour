@@ -60,4 +60,5 @@
     <string name="countries">Countries</string>
     <string name="donation_option_str">$%s</string>
     <string name="progress_report">Progress Report</string>
+    <string name="updates_title_str">Recent updates for project: %s</string>
 </resources>

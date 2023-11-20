@@ -12,6 +12,7 @@ import com.mict.hopeharbour.R
 import com.mict.hopeharbour.databinding.FragmentOrganizationBinding
 import com.mict.hopeharbour.main.vm.MainViewModel
 import com.mict.hopeharbour.model.Organization
+import global_objects.BaseFragment
 
 class OrganizationFragment : BaseFragment() {
 
